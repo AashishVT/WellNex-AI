@@ -16,7 +16,10 @@ export default function App(){
     <div className="min-h-screen">
       <header className="p-4 border-b">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold">WellNex</Link>
+          <Link to="/" className="flex items-center gap-3">
+            <img src="/branding/wellnex_logo_C.svg" alt="WellNex" className="h-10 w-10 rounded-md" />
+            <span className="text-xl font-semibold">WellNex</span>
+          </Link>
           <nav className="space-x-4">
             <Link to="/login" className="text-slate-600">Login</Link>
             <Link to="/doctor" className="text-slate-600">Doctor</Link>
