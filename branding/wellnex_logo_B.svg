@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="128" viewBox="0 0 512 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>WellNex — wordmark</title>
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1">
+      <stop offset="0" stop-color="#0E7490"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="128" fill="transparent"/>
+  <g transform="translate(28,12)" fill="none" stroke="url(#g2)" stroke-width="6" stroke-linecap="round">
+    <path d="M12 32 q40 -40 80 0" stroke="url(#g2)" fill="none" />
+  </g>
+  <text x="140" y="80" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="56" fill="#0E7490">WellNex</text>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title>WellNex — icon C</title>
+  <defs>
+    <linearGradient id="g3" x1="0" x2="1">
+      <stop offset="0" stop-color="#0E7490"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="64" fill="#fff"/>
+  <g transform="translate(128,128)">
+    <circle cx="128" cy="128" r="112" fill="url(#g3)" />
+    <g fill="#fff" transform="translate(96,96)">
+      <path d="M0 48 q32 -64 64 0 q32 -64 64 0 q-64 96 -128 0z" />
+    </g>
+  </g>
+</svg>

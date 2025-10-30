@@ -16,7 +16,7 @@ export default function App(){
     <div className="min-h-screen">
       <header className="p-4 border-b">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold">MedAI Care</Link>
+          <Link to="/" className="text-xl font-semibold">WellNex</Link>
           <nav className="space-x-4">
             <Link to="/login" className="text-slate-600">Login</Link>
             <Link to="/doctor" className="text-slate-600">Doctor</Link>
@@ -42,7 +42,7 @@ export default function App(){
       </main>
 
       <footer className="mt-12 border-t p-6 text-center text-sm text-slate-500">
-        © 2025 MedAI Care — All Rights Reserved.
+        © 2025 WellNex — All Rights Reserved.
       </footer>
     </div>
   )

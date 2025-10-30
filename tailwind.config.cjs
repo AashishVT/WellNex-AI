@@ -3,9 +3,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        medai: {
+        wellnex: {
           DEFAULT: '#0E7490',
-          accent: '#14B8A6'
+          accent: '#14B8A6',
+          muted: '#64748B',
+          bg: '#FFFFFF'
         }
       },
       borderRadius: {

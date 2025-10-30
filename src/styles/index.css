@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root{
-  --teal: #0E7490;
-  --aqua: #14B8A6;
+  --primary: #0E7490;
+  --accent: #14B8A6;
+  --muted: #64748B;
 }
 
 body{ font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial }
 
 /* small helper */
-.btn-primary{ background: linear-gradient(90deg,var(--teal),var(--aqua)); color: white }
+.btn-primary{ background: linear-gradient(90deg,var(--primary),var(--accent)); color: white }
