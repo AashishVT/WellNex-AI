@@ -14,3 +14,11 @@ createRoot(document.getElementById('root')).render(
       </AuthProvider>
   </React.StrictMode>
 )
+// Register service worker in production
+if('serviceWorker' in navigator && window.location.protocol !== 'file:'){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('/src/service-worker.js').then(()=>{
+      console.log('Service worker registered')
+    }).catch(()=>{})
+  })
+}

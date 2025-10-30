@@ -1,0 +1,6 @@
+{
+  "appId": "com.wellnex.app",
+  "appName": "WellNex",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

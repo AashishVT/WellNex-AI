@@ -43,3 +43,46 @@ If you prefer using the GitHub CLI (gh), you can run:
 gh repo create <your-username>/medai-care-frontend --public --source=. --remote=origin --push
 ```
 
+PWA & Native app notes
+----------------------
+
+This project includes starter PWA, Capacitor and Electron configs to help produce installable apps for mobile and desktop.
+
+Generating icons
+- Run locally to rasterize SVGs into PNG icons (requires `sharp`):
+
+```powershell
+npm install --save-dev sharp
+npm run generate-icons
+```
+
+After generating icons, build the app and the `dist/` folder will include the PWA-ready files:
+
+```powershell
+npm run build
+npm run preview
+```
+
+Android (via Capacitor)
+- Install Capacitor and add a native platform locally (these steps run on your machine):
+
+```powershell
+npm install @capacitor/cli @capacitor/core --save
+npx cap init
+npx cap add android
+npm run build
+npx cap copy android
+npx cap open android
+```
+
+Desktop (Electron)
+- Basic electron starter files are under `electron/`. To run in dev mode:
+
+```powershell
+SET ELECTRON_DEV=1
+npm run dev & npx electron .
+```
+
+To package, install electron-builder and configure packaging locally.
+
+

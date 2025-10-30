@@ -6,6 +6,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "generate-icons": "node scripts/generate-icons.js",
+    "build:pwa": "vite build && echo PWA built — ensure icons/manifest are in /dist",
+    "serve:preview": "vite preview --port 5173",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "vitest"
   },
