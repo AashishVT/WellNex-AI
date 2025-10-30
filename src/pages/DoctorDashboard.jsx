@@ -25,50 +25,44 @@ export default function DoctorDashboard(){
 
   return (
     <div className="grid md:grid-cols-4 gap-6">
-      <aside className="md:col-span-1 p-2">
-        <div className="p-4 border rounded-lg">
+      <aside className="md:col-span-1">
+        <div className="p-4">
           <Sidebar />
         </div>
       </aside>
 
-      <section className="md:col-span-3 p-4">
-        <h2 className="text-xl font-semibold">Welcome back, Dr. Patel</h2>
-
-        <div className="mt-4">
-          <AlertsBanner patients={patients} />
-
-          <div className="grid md:grid-cols-3 gap-4 mt-4">
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-semibold">Quick Metrics</h4>
-              <div className="mt-2 text-sm text-slate-600">Total patients: <strong>{patients.length}</strong></div>
-              <div className="mt-2 text-sm text-slate-600">Active alerts: <strong>{patients.filter(p=>p.alert!=='green').length}</strong></div>
-            </div>
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-semibold">Action Suggestions</h4>
-              <div className="mt-2 text-sm text-slate-600">AI suggests periodic reviews for flagged patients.</div>
-            </div>
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-semibold">Performance</h4>
-              <div className="mt-2"><HealthTrend data={[60,62,61,64,63,66]} /></div>
-            </div>
+      <section className="md:col-span-2 p-4">
+        <DoctorHeader />
+        <div className="mt-4 grid md:grid-cols-3 gap-4">
+          <div className="md:col-span-1">
+            <PatientQueue patients={patients} onView={p=>setSelected(p)} onStart={p=>alert('Start consult: '+p.name)} />
           </div>
-
-          <div className="p-4 border rounded-lg mt-4">
-            <h3 className="font-semibold mb-2">Patient Search</h3>
-            <div className="grid md:grid-cols-3 gap-4">
-              <div className="md:col-span-1">
-                <PatientSearch patients={patients} onSelect={p=>setSelected(p)} />
-              </div>
-              <div className="md:col-span-2">
-                <h4 className="font-semibold mb-2">Patient List</h4>
-                <Table columns={columns} data={patients} />
-              </div>
-            </div>
+          <div className="md:col-span-2 space-y-4">
+            <ControlCenter />
+            <HealthSummaryPanel patient={selected || patients[0]} />
+            <Timeline events={[{date:'2025-10-01', title:'Consultation', desc:'Routine check-up'},{date:'2025-08-12', title:'Lab', desc:'Blood test: normal'}]} />
           </div>
         </div>
-
-        {selected && <PatientPreview patient={selected} onClose={()=>setSelected(null)} />}
       </section>
+
+      <aside className="md:col-span-1 p-4">
+        <AlertsBanner patients={patients} />
+        <div className="mt-4">
+          <h4 className="font-semibold mb-2">Metrics</h4>
+          <div className="p-3 border rounded-lg">
+            <div className="text-sm text-slate-600">Total consultations: <strong>24</strong></div>
+            <div className="text-sm text-slate-600 mt-2">AI alerts handled: <strong>3</strong></div>
+          </div>
+        </div>
+      </aside>
+
+      <div className="md:col-span-4">
+        <div className="p-4">
+          <BottomNav />
+        </div>
+      </div>
+
+      {selected && <PatientPreview patient={selected} onClose={()=>setSelected(null)} />}
     </div>
   )
 }

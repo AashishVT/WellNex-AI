@@ -57,9 +57,9 @@ export async function fetchPatients(){
   return {
     ok: true,
     patients: [
-      { id: 'p1', name: 'Priya Sharma', age: 29, lastCheckup: '2025-09-12', alert: 'green' },
-      { id: 'p2', name: 'Ravi Kumar', age: 52, lastCheckup: '2025-10-01', alert: 'orange' },
-      { id: 'p3', name: 'Sunita Rao', age: 43, lastCheckup: '2025-08-05', alert: 'red' }
+      { id: 'p1', name: 'Priya Sharma', age: 29, lastCheckup: '2025-09-12', alert: 'green', appointment: '10:30 AM', condition: 'Hypertension', status: 'Waiting', aiChip: 'High BP detected' },
+      { id: 'p2', name: 'Ravi Kumar', age: 52, lastCheckup: '2025-10-01', alert: 'orange', appointment: '10:45 AM', condition: 'Diabetes', status: 'Ongoing', aiChip: 'A1c borderline' },
+      { id: 'p3', name: 'Sunita Rao', age: 43, lastCheckup: '2025-08-05', alert: 'red', appointment: '11:15 AM', condition: 'Chest Pain', status: 'Waiting', aiChip: 'Cardiac risk' }
     ]
   }
 }
