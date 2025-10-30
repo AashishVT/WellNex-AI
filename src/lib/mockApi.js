@@ -52,6 +52,29 @@ export async function getAiInsights(patientId){
   }
 }
 
+export async function getPatientTimeline(patientId){
+  await wait(300)
+  return {
+    ok: true,
+    events: [
+      { date: '2025-10-01', title: 'Routine Check', desc: 'BP elevated; advised diet changes', type: 'visit' },
+      { date: '2025-09-15', title: 'Blood Test', desc: 'Glucose 132 mg/dL', type: 'lab' },
+      { date: '2025-08-05', title: 'Prescription', desc: 'Started antihypertensive', type: 'prescription' }
+    ]
+  }
+}
+
+export async function fetchPrescriptions(patientId){
+  await wait(250)
+  return {
+    ok: true,
+    prescriptions: [
+      { id: 'rx1', medicine: 'Amlodipine', dosage: '5mg', duration: '30 days', doctor: 'Dr. Patel', updated: '2025-10-01' },
+      { id: 'rx2', medicine: 'Metformin', dosage: '500mg', duration: '60 days', doctor: 'Dr. Kumar', updated: '2025-09-15' }
+    ]
+  }
+}
+
 export async function fetchPatients(){
   await wait(300)
   return {
