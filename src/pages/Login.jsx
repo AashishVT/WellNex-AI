@@ -1,22 +1,31 @@
 import React, {useState} from 'react'
 import { useForm } from 'react-hook-form'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import OTPModal from '../components/ui/OTPModal'
+import { useAuthContext } from '../context/AuthProvider'
 
 export default function Login(){
   const { register, handleSubmit } = useForm()
   const [sending, setSending] = useState(false)
   const [otpOpen, setOtpOpen] = useState(false)
+  const [otpId, setOtpId] = useState(null)
   const [searchParams] = useSearchParams()
   const role = searchParams.get('role') || 'patient'
+  const auth = useAuthContext()
+  const navigate = useNavigate()
 
   function onSubmit(data){
     setSending(true)
-    // mock send OTP
-    setTimeout(()=>{
+    auth.sendOtp(data.phone || data.aadhaar).then(res=>{
+      setSending(false)
+      if(res && res.otpId){
+        setOtpId(res.otpId)
+      }
+      setOtpOpen(true)
+    }).catch(()=>{
       setSending(false)
       setOtpOpen(true)
-    }, 700)
+    })
   }
 
   return (
@@ -38,7 +47,16 @@ export default function Login(){
             <a href="#" className="text-sm text-slate-500">Need help?</a>
           </div>
         </form>
-        <OTPModal open={otpOpen} onClose={()=>setOtpOpen(false)} phone={''} />
+        <OTPModal open={otpOpen} onClose={()=>setOtpOpen(false)} phone={''} otpId={otpId} onVerify={async (code)=>{
+          if(!otpId) return
+          const result = await auth.verifyOtp(otpId, code)
+          if(result && result.ok){
+            setOtpOpen(false)
+            navigate(role === 'doctor' ? '/doctor' : '/patient')
+          } else {
+            alert(result.error || 'Verification failed')
+          }
+        }} />
       </div>
     </div>
   )

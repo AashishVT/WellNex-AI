@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Table from '../components/ui/Table'
-import { PATIENTS } from '../mock/patients'
+import mockApi from '../lib/mockApi'
 
 export default function DoctorDashboard(){
   const columns = [
@@ -9,6 +9,13 @@ export default function DoctorDashboard(){
     {key: 'lastCheckup', title: 'Last Checkup'},
     {key: 'alert', title: 'Alert Flag'}
   ]
+
+  const [patients, setPatients] = useState([])
+  useEffect(()=>{
+    mockApi.fetchPatients().then(res=>{
+      if(res.ok) setPatients(res.patients)
+    })
+  },[])
 
   return (
     <div className="grid md:grid-cols-4 gap-6">
@@ -27,7 +34,7 @@ export default function DoctorDashboard(){
           <div className="p-4 border rounded-lg mb-4">AI Alert Banner (placeholder)</div>
           <div className="p-4 border rounded-lg">
             <h3 className="font-semibold mb-2">Patient Search</h3>
-            <Table columns={columns} data={PATIENTS} />
+            <Table columns={columns} data={patients} />
           </div>
         </div>
       </section>

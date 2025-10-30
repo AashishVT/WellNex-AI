@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-export default function OTPModal({open, onClose, phone}){
+export default function OTPModal({open, onClose, phone, otpId, onVerify}){
   const [otp, setOtp] = useState('')
   if(!open) return null
   return (
@@ -12,7 +12,13 @@ export default function OTPModal({open, onClose, phone}){
         <input value={otp} onChange={(e)=>setOtp(e.target.value)} className="w-full border px-3 py-2 rounded-lg mb-4" placeholder="123456" />
         <div className="flex justify-end">
           <button onClick={onClose} className="px-3 py-2 text-sm rounded-lg">Cancel</button>
-          <button onClick={()=>{alert('Mock verify: '+otp); onClose()}} className="px-3 py-2 ml-2 rounded-lg text-white" style={{background:'var(--teal)'}}>Verify</button>
+          <button onClick={async ()=>{
+            if(onVerify){
+              await onVerify(otp)
+            } else {
+              alert('Mock verify: '+otp)
+            }
+          }} className="px-3 py-2 ml-2 rounded-lg text-white" style={{background:'var(--teal)'}}>Verify</button>
         </div>
       </div>
     </div>
